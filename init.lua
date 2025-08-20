@@ -1015,9 +1015,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
   -- Open neo-tree
-  vim.keymap.set('n', '<C-n>', '<CMD>Neotree toggle=true<CR>', { desc = 'Toggle neo-tree' }),
 
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 

@@ -293,7 +293,12 @@ require('lazy').setup({
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+      default_file_explorer = true,
+      view_options = {
+        show_hidden = true,
+      },
+    },
     -- Optional dependencies
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
@@ -1043,9 +1048,6 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
--- Oil.nvim
-require('oil').setup { default_file_explorer = true }
 
 -- Neovide configuration
 if vim.g.neovide then

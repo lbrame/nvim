@@ -121,6 +121,9 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Break lines at the end of the word
+vim.o.linebreak = true
+
 -- Expand tabs into spaces
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -985,7 +988,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- Open neo-tree
 
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps

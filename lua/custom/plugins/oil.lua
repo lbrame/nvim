@@ -1,4 +1,4 @@
-return {
+local tabl = {
   'stevearc/oil.nvim',
   ---@module 'oil'
   ---@type oil.SetupOpts
@@ -10,8 +10,6 @@ return {
     columns = {
       'icon',
     },
-    -- Set keymap to open Oil.nvim
-    vim.keymap.set('n', '<C-n>', '<CMD>e .<CR>', { desc = 'Open oil.nvim' }),
   },
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
@@ -19,3 +17,8 @@ return {
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
 }
+
+-- Set keymap to open Oil.nvim
+vim.keymap.set('n', '<C-n>', '<CMD>e .<CR>', { desc = 'Open oil.nvim' })
+
+return tabl

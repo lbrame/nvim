@@ -121,6 +121,9 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Break lines at the end of the word
+vim.o.linebreak = true
+
 -- Expand tabs into spaces
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -288,22 +291,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
-  },
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {
-      default_file_explorer = true,
-      view_options = {
-        show_hidden = true,
-      },
-    },
-    -- Optional dependencies
-    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -697,6 +684,8 @@ require('lazy').setup({
         gopls = {},
         -- pyright = {},
         rust_analyzer = {},
+        omnisharp = {},
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -920,15 +909,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -994,13 +974,6 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-  -- Pretty Neovim dashboard
-  {
-    'goolord/alpha-nvim',
-    config = function()
-      require('alpha').setup(require('alpha.themes.dashboard').config)
-    end,
-  },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -1017,7 +990,6 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   -- Open neo-tree
-  vim.keymap.set('n', '<C-n>', '<CMD>Neotree toggle=true<CR>', { desc = 'Toggle neo-tree' }),
 
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
@@ -1025,7 +997,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1055,6 +1027,8 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+require 'obsidian'
 
 -- Neovide configuration
 if vim.g.neovide then

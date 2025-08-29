@@ -214,13 +214,20 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
--- [[ Aliases ]]
+-- [[ User commands ]]
 -- cd to directory current file is in globally
 vim.api.nvim_create_user_command('Cd', 'cd %:h', {})
+
 -- cd to directory current file is in within local buffer
 vim.api.nvim_create_user_command('Lcd', 'lcd %:h', {})
+
 -- cd to directory current file is in within local tab
 vim.api.nvim_create_user_command('Tcd', 'tcd %:h', {})
+
+-- Toggle inlay hints for LSP (eg: type annotations for type inference)
+vim.api.nvim_create_user_command('ToggleInlayHints', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = 'Toggle inlay hints' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

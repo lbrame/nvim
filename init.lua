@@ -1043,6 +1043,9 @@ require('lazy').setup({
 -- Enable Obsidian plugin
 require 'obsidian'
 
+-- Enable inlay hints
+vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+
 -- Neovide configuration
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here

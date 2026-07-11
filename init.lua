@@ -130,6 +130,9 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 
+-- Show vertical line at position 80
+vim.o.colorcolumn = '80'
+
 -- Save undo history
 vim.o.undofile = false
 
@@ -174,6 +177,13 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- Listchars
+vim.o.list = true
+vim.o.listchars = 'tab:> ,nbsp:!,trail:.'
+
+-- Wrap
+vim.o.wrap = false
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -705,6 +715,7 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         gopls = {},
+        -- elixirls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- omnisharp = {},
@@ -1050,12 +1061,3 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
--- Enable Obsidian plugin
-require 'obsidian'
-
--- Neovide configuration
-if vim.g.neovide then
-  -- Put anything you want to happen only in Neovide here
-  vim.o.guifont = 'Jetbrains Mono:h16'
-end
